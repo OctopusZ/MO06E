@@ -78,7 +78,8 @@ uint8_t report[REPORT_LENGTH];//buffer of the HID report
 *****************************************************************/
 
 #include <Encoder.h>
-#define CLOCKWISE  0
+#define CLOCKWISE  1  //0 for clockwise / 1 for anticlockwise
+#define SPEED  1      //speed of the vol change. The greater the value, the slower the speed.
 Encoder myEnc (8, 9); //connect to the pinouts of the encoder
 
 /****************************************************************
@@ -174,36 +175,41 @@ void loop()
 
     long newPosition = myEnc.read();
 
-
-    while (newPosition > 0)
+    while (newPosition > SPEED)
     {
 
-		if (CLOCKWISE == 0)
+		if (newPosition / SPEED)
 		{
-			Media_press(VolD);
-		}
-		else
-		{
-			Media_press(VolI);
+			if (CLOCKWISE == 0)
+			{
+				Media_press(VolI);
+			}
+			else
+			{
+				Media_press(VolD);
+			}
 		}
 
-        newPosition -= 1;
+		newPosition = newPosition - SPEED;
         myEnc.write (newPosition);
 
     }
-    while (newPosition < 0)
+    while (newPosition < - SPEED)
     {
+        if ((- newPosition) / SPEED)
+        {
 
-		if (CLOCKWISE == 0)
-		{
-			Media_press(VolI);
-		}
-		else
-		{
-			Media_press(VolD);
-		}
 
-        newPosition += 1;
+			if (CLOCKWISE == 0)
+			{
+				Media_press(VolD);
+			}
+            else
+            {
+				Media_press(VolI);
+            }
+        }
+        newPosition += SPEED;
         myEnc.write (newPosition);
 
     }
