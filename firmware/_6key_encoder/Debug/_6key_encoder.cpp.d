@@ -1,0 +1,23 @@
+C:\Users\zh\AppData\Local\Temp\VMicroBuilds\_6key_encoder\leonardo\_6key_encoder.cpp.o: \
+ C:\Users\zh\AppData\Local\Temp\VMicroBuilds\_6key_encoder\leonardo\_6key_encoder.cpp \
+ D:\单片机\arduino-1.6.12-windows\arduino-1.6.12\hardware\arduino\avr\cores\arduino/arduino.h \
+ D:\单片机\arduino-1.6.12-windows\arduino-1.6.12\hardware\arduino\avr\cores\arduino/binary.h \
+ D:\单片机\arduino-1.6.12-windows\arduino-1.6.12\hardware\arduino\avr\cores\arduino/WCharacter.h \
+ D:\单片机\arduino-1.6.12-windows\arduino-1.6.12\hardware\arduino\avr\cores\arduino/WString.h \
+ D:\单片机\arduino-1.6.12-windows\arduino-1.6.12\hardware\arduino\avr\cores\arduino/HardwareSerial.h \
+ D:\单片机\arduino-1.6.12-windows\arduino-1.6.12\hardware\arduino\avr\cores\arduino/Stream.h \
+ D:\单片机\arduino-1.6.12-windows\arduino-1.6.12\hardware\arduino\avr\cores\arduino/Print.h \
+ D:\单片机\arduino-1.6.12-windows\arduino-1.6.12\hardware\arduino\avr\cores\arduino/Printable.h \
+ D:\单片机\arduino-1.6.12-windows\arduino-1.6.12\hardware\arduino\avr\cores\arduino/USBAPI.h \
+ D:\单片机\arduino-1.6.12-windows\arduino-1.6.12\hardware\arduino\avr\cores\arduino/Arduino.h \
+ D:\单片机\arduino-1.6.12-windows\arduino-1.6.12\hardware\arduino\avr\cores\arduino/USBDesc.h \
+ D:\单片机\arduino-1.6.12-windows\arduino-1.6.12\hardware\arduino\avr\cores\arduino/USBCore.h \
+ D:\单片机\arduino-1.6.12-windows\arduino-1.6.12\hardware\arduino\avr\variants\leonardo/pins_arduino.h \
+ D:\单片机\arduino-1.6.12-windows\arduino-1.6.12\hardware\arduino\avr\libraries\HID\src/HID.h \
+ D:\单片机\arduino-1.6.12-windows\arduino-1.6.12\hardware\arduino\avr\cores\arduino/Arduino.h \
+ D:\单片机\arduino-1.6.12-windows\arduino-1.6.12\hardware\arduino\avr\cores\arduino/PluggableUSB.h \
+ C:\Users\zh\Documents\Arduino\libraries\Encoder/Encoder.h \
+ C:\Users\zh\Documents\Arduino\libraries\Encoder/utility/direct_pin_read.h \
+ C:\Users\zh\Documents\Arduino\libraries\Encoder/utility/interrupt_pins.h \
+ D:\单片机\arduino-1.6.12-windows\arduino-1.6.12\libraries\Keypad/Keypad.h \
+ D:\单片机\arduino-1.6.12-windows\arduino-1.6.12\libraries\Keypad/utility/Key.h

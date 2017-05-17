@@ -78,7 +78,7 @@ uint8_t report[REPORT_LENGTH];//buffer of the HID report
 *****************************************************************/
 
 #include <Encoder.h>
-
+#define CLOCKWISE  0
 Encoder myEnc (8, 9); //connect to the pinouts of the encoder
 
 /****************************************************************
@@ -178,7 +178,14 @@ void loop()
     while (newPosition > 0)
     {
 
-        Media_press (VolD);
+		if (CLOCKWISE == 0)
+		{
+			Media_press(VolD);
+		}
+		else
+		{
+			Media_press(VolI);
+		}
 
         newPosition -= 1;
         myEnc.write (newPosition);
@@ -187,7 +194,14 @@ void loop()
     while (newPosition < 0)
     {
 
-        Media_press (VolI);
+		if (CLOCKWISE == 0)
+		{
+			Media_press(VolI);
+		}
+		else
+		{
+			Media_press(VolD);
+		}
 
         newPosition += 1;
         myEnc.write (newPosition);

@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C5F80730-F44F-4478-BDAE-6634EFC2CA88}</ProjectGuid>
+    <RootNamespace>$safeprojectname$</RootNamespace>
+    <ProjectName>_6key_encoder</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>
+    </PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>
+    </PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>D:\单片机\arduino-1.6.12-windows\arduino-1.6.12\hardware\arduino\avr\libraries\HID\src;C:\Users\zh\Documents\Arduino\libraries\Encoder;D:\单片机\arduino-1.6.12-windows\arduino-1.6.12\libraries\Keypad;C:\Users\zh\Documents\Arduino\libraries\Encoder\utility;D:\单片机\arduino-1.6.12-windows\arduino-1.6.12\hardware\arduino\avr\libraries\HID\src\utility;D:\单片机\arduino-1.6.12-windows\arduino-1.6.12\libraries\Keypad\utility;D:\单片机\arduino-1.6.12-windows\arduino-1.6.12\libraries;D:\单片机\arduino-1.6.12-windows\arduino-1.6.12\hardware\arduino\avr\libraries;C:\Users\zh\Documents\Arduino\libraries;D:\单片机\arduino-1.6.12-windows\arduino-1.6.12\hardware\arduino\avr\cores\arduino;D:\单片机\arduino-1.6.12-windows\arduino-1.6.12\hardware\arduino\avr\variants\leonardo;D:\github\MO06E\firmware\_6key_encoder;D:\单片机\arduino-1.6.12-windows\arduino-1.6.12\hardware\arduino\avr\cores\arduino;D:\单片机\arduino-1.6.12-windows\arduino-1.6.12\hardware\arduino\avr\variants\leonardo;D:\单片机\arduino-1.6.12-windows\arduino-1.6.12\hardware\arduino\avr\libraries\HID\src;C:\Users\zh\Documents\Arduino\libraries\Encoder;D:\单片机\arduino-1.6.12-windows\arduino-1.6.12\libraries\Keypad;D:\单片机\arduino-1.6.12-windows\arduino-1.6.12\libraries;D:\单片机\arduino-1.6.12-windows\arduino-1.6.12\hardware\arduino\avr\libraries;C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\Extensions\o3hak0xe.231\Micro Platforms\default\debuggers;C:\Users\zh\Documents\Arduino\libraries;C:\Users\zh\Documents\Arduino\libraries\Encoder\utility;D:\单片机\arduino-1.6.12-windows\arduino-1.6.12\libraries\Keypad\utility;D:\单片机\arduino-1.6.12-windows\arduino-1.6.12\hardware\tools\avr/avr/include/;D:\单片机\arduino-1.6.12-windows\arduino-1.6.12\hardware\tools\avr//avr/include/avr/;D:\单片机\arduino-1.6.12-windows\arduino-1.6.12\hardware\tools\avr/lib\gcc\avr\4.8.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>D:\github\MO06E\firmware\_6key_encoder\__vm\._6key_encoder.vsarduino.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
+      <PreprocessorDefinitions>__AVR_ATmega32u4__;__AVR_ATmega32U4__;F_CPU=16000000L;ARDUINO=106012;ARDUINO_AVR_LEONARDO;ARDUINO_ARCH_AVR;USB_VID=0x2341;USB_PID=0x8036;__cplusplus=201103L;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="VisualMicro" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="_6key_encoder.ino">
+      <FileType>CppCode</FileType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="__vm\._6key_encoder.vsarduino.h" />
+  </ItemGroup>
+  <PropertyGroup>
+    <DebuggerFlavor>VisualMicroDebugger</DebuggerFlavor>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
