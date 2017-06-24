@@ -149,7 +149,7 @@ void loop()
 
                     break;
                 case RELEASED:
-                    //LED_Off (kpd.key[i].kcode);
+                    LED_Off (kpd.key[i].kcode);
                     break;
                 case IDLE:
 
