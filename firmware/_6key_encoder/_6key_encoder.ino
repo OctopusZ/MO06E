@@ -1,76 +1,7 @@
+#include "media.h"
 
-/****************************************************************
-                       HID Report
-*****************************************************************/
-
-#include <HID.h>
-
-static const uint8_t _hidReportDescriptor[] PROGMEM =
-{
-
-    0x05, 0x0c,       //   USAGE_PAGE (Consumer Page)
-    0x09, 0x01,       //   USAGE (Consumer Control)
-    0xa1, 0x01,       //   COLLECTION (Application)
-    0x85, 0x05,       //   REPORT_ID (5)
-    0x15, 0x00,       //   Logical Minimum (0)
-    0x25, 0x01,       //   Logical Maximum (1)
-
-    0x09, 0xea,       //   USAGE (Volume Decrement)
-    0x09, 0xe9,       //   USAGE (Volume Increment)
-    0x75, 0x01,       //   Report Size (1)
-    0x95, 0x02,       //   Report Count (2)
-    0x81, 0x06,       //   Input (Data, Variable, Relative)
-
-
-    0x09, 0xe2,       //   USAGE (Mute)
-    0x95, 0x01,       //   Report Count (1)
-    0x81, 0x06,       //   Input (Data, Variable, Relative)
-
-    0x09, 0xcd,       //   USAGE (Play/Pause)
-    0x95, 0x01,       //   Report Count (1)
-    0x81, 0x06,       //   Input (Data, Variable, Relative)
-
-    0x09, 0xb5,       //   USAGE (Next)
-    0x95, 0x01,       //   Report Count (1)
-    0x81, 0x06,       //   Input (Data, Variable, Relative)
-
-    0x09, 0xb6,       //   USAGE (Prev)
-    0x95, 0x01,       //   Report Count (1)
-    0x81, 0x06,       //   Input (Data, Variable, Relative)
-
-    0x09, 0xb3,       //   USAGE (Fast Forward)
-    0x95, 0x01,       //   Report Count (1)
-    0x81, 0x06,       //   Input (Data, Variable, Relative)
-
-    0x09, 0xb4,       //   USAGE (Rewind)
-    0x95, 0x01,       //   Report Count (1)
-    0x81, 0x06,       //   Input (Data, Variable, Relative)
-
-    0x0a, 0x83, 0x01, //   USAGE (Windows Media Player(0x183))
-    0x95, 0x01,       //   Report Count (1)
-    0x81, 0x06,       //   Input (Data, Variable, Relative)
-
-    0x95, 0x07,       //   Report Count (7) Number of bits remaining in byte
-    0x81, 0x07,       //   Input (Constant, Variable, Relative)
-
-    0xc0              //   END_COLLECTION
-};
-
-
-
-//the USAGE of the keyboard
-#define VolD  1
-#define VolI  2
-#define Mute  4
-#define Pause 8
-#define Next  16
-#define Prev  32
-#define Fast  64
-#define Rewind  128
-
-
-#define REPORT_LENGTH  2 //the length of HID report buffer
-uint8_t report[REPORT_LENGTH];//buffer of the HID report
+Media_ Media;
+//Media_ Media = new Media_();
 
 
 /****************************************************************
@@ -79,7 +10,7 @@ uint8_t report[REPORT_LENGTH];//buffer of the HID report
 
 #include <Encoder.h>
 #define CLOCKWISE  1  //0 for clockwise / 1 for anticlockwise
-#define SPEED  1      //speed of the vol change. The greater the value, the slower the speed.
+#define ENCODER_SPEED  1      //speed of the vol change. The greater the value, the slower the speed.
 Encoder myEnc (8, 9); //connect to the pinouts of the encoder
 
 /****************************************************************
@@ -95,8 +26,7 @@ const byte COLS = 4; //4 columns
 char keymap[ROWS][COLS] =
 {
     { Mute, Rewind, Fast, 0 },
-    { Prev, Pause, Next, Mute },
-
+    { Prev, Pause, Next, Mute }
 };
 
 
@@ -117,22 +47,7 @@ byte LEDPins[6] = { 1, 0, 2,
 /****************************************************************
 *****************************************************************/
 
-void Report_clean (void)
-{
-    for (size_t i = 0; i < REPORT_LENGTH; i++)
-    {
-        report[i] = 0;
-    }
 
-}
-
-void Media_press (char dat)
-{
-    report[0] = dat;
-    HID().SendReport (5, report, 2); //(id,data,len)
-    Report_clean();
-    HID().SendReport (5, report, 2); //(id,data,len)
-}
 
 void LED_On (char num)
 {
@@ -151,17 +66,16 @@ void LED_Off (char num)
 void setup()
 {
     // put your setup code here, to run once:
-    static HIDSubDescriptor node (_hidReportDescriptor, sizeof (_hidReportDescriptor) );
-    HID().AppendDescriptor (&node);
-
-    Report_clean();
+    
+    Media.begin();  
+    Media.releaseAll();
     Serial.begin (9600);
-    for (size_t i = 0; i < 8; i++)
+    for (int i = 0; i < 8; i++)
     {
         pinMode(LEDPins[i], OUTPUT);
 
     }
-    for (size_t i = 0; i < 8; i++)
+    for (int i = 0; i < 8; i++)
     {
         LED_Off (i);
 
@@ -171,45 +85,45 @@ void setup()
 
 void loop()
 {
-    Report_clean();
+    Media.releaseAll();
 
     long newPosition = myEnc.read();
 
-    while (newPosition > SPEED)
+    while (newPosition > ENCODER_SPEED)
     {
 
-		if (newPosition / SPEED)
-		{
-			if (CLOCKWISE == 0)
-			{
-				Media_press(VolI);
-			}
-			else
-			{
-				Media_press(VolD);
-			}
-		}
+        if (newPosition / ENCODER_SPEED)
+        {
+            if (CLOCKWISE == 0)
+            {
+                Media.write(VolI);
+            }
+            else
+            {
+                Media.write(VolD);
+            }
+        }
 
-		newPosition = newPosition - SPEED;
+        newPosition = newPosition - ENCODER_SPEED;
         myEnc.write (newPosition);
 
     }
-    while (newPosition < - SPEED)
+    while (newPosition < - ENCODER_SPEED)
     {
-        if ((- newPosition) / SPEED)
+        if ((- newPosition) / ENCODER_SPEED)
         {
 
 
-			if (CLOCKWISE == 0)
-			{
-				Media_press(VolD);
-			}
+            if (CLOCKWISE == 0)
+            {
+                Media.write(VolD);
+            }
             else
             {
-				Media_press(VolI);
+                Media.write(VolI);
             }
         }
-        newPosition += SPEED;
+        newPosition += ENCODER_SPEED;
         myEnc.write (newPosition);
 
     }
@@ -225,7 +139,7 @@ void loop()
                 {
                 case PRESSED:
 
-                    Media_press (kpd.key[i].kchar); //send the keychar to the computer
+                    Media.write(kpd.key[i].kchar);
                     LED_On (kpd.key[i].kcode);
                     Serial.println (kpd.key[i].kcode);
                     break;
@@ -233,7 +147,7 @@ void loop()
 
                     break;
                 case RELEASED:
-                    LED_Off (kpd.key[i].kcode);
+                    //LED_Off (kpd.key[i].kcode);
                     break;
                 case IDLE:
 

@@ -13,6 +13,7 @@ C:\Users\zh\AppData\Local\Temp\VMicroBuilds\_6key_encoder\leonardo\_6key_encoder
  D:\单片机\arduino-1.6.12-windows\arduino-1.6.12\hardware\arduino\avr\cores\arduino/USBDesc.h \
  D:\单片机\arduino-1.6.12-windows\arduino-1.6.12\hardware\arduino\avr\cores\arduino/USBCore.h \
  D:\单片机\arduino-1.6.12-windows\arduino-1.6.12\hardware\arduino\avr\variants\leonardo/pins_arduino.h \
+ C:\Users\zh\AppData\Local\Temp\VMicroBuilds\_6key_encoder\leonardo\media.h \
  D:\单片机\arduino-1.6.12-windows\arduino-1.6.12\hardware\arduino\avr\libraries\HID\src/HID.h \
  D:\单片机\arduino-1.6.12-windows\arduino-1.6.12\hardware\arduino\avr\cores\arduino/Arduino.h \
  D:\单片机\arduino-1.6.12-windows\arduino-1.6.12\hardware\arduino\avr\cores\arduino/PluggableUSB.h \
